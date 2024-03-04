@@ -1,3 +1,4 @@
+local servers = {"lua_ls", "pylsp", "jdtls", "tsserver"}
 return {
   {
     "williamboman/mason.nvim",
@@ -9,7 +10,8 @@ return {
     'williamboman/mason-lspconfig.nvim',
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = {"lua_ls", "pylsp"}
+        ensure_installed = servers,
+        automatic_installation = { exclude = "jdtls" },
       })
     end
   },
@@ -42,6 +44,8 @@ return {
         capabilities = capabilities
       })
 
+      lspconfig.jdtls.setup({})
+      lspconfig.tsserver.setup({})
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})
       vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, {})
