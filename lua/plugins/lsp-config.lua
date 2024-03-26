@@ -1,4 +1,4 @@
-local servers = {"lua_ls", "pylsp", "jdtls", "tsserver"}
+local servers = {"lua_ls", "pylsp", "tsserver"}
 return {
   {
     "williamboman/mason.nvim",
@@ -44,7 +44,7 @@ return {
         capabilities = capabilities
       })
 
-      lspconfig.jdtls.setup({})
+      -- lspconfig.jdtls.setup({})
       lspconfig.tsserver.setup({})
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})
